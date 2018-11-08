@@ -30,15 +30,12 @@ class User
     recipes.last
   end
   def safe_recipes
-    recipes.select do |recipe|
-      # binding.pry
-      recipe.ingredients.select do |ingredient|
-        # binding.pry
-        allergens.select do |allergen|
-          # binding.pry
-          ingredient != allergen
-        end
+    safe_recipes_arr = []
+    recipes.each do |recipe|
+      if (recipe.ingredients & allergens).empty?
+        safe_recipes_arr << recipe
       end
     end
+    safe_recipes_arr
   end
 end

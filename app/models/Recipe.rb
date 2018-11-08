@@ -18,7 +18,7 @@ class Recipe
   ###########
   # see there's another way to simplify the ingredients method
   def ingredients
-    RecipeIngredient.all.select {|recipe_ingredient| recipe_ingredient.recipe == self}.map{|recipe_ingredient| recipe_ingredient.ingredient}
+    RecipeIngredient.all.select {|recipe_ingredient| recipe_ingredient.recipe == self}.map{|recipeingredient| recipeingredient.ingredient}
   end
   def allergens
     Allergen.all.select do |allergen|
